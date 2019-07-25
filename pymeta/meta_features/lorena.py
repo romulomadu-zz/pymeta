@@ -491,7 +491,7 @@ def l3(X: numpy.array, y: numpy.array, model: LinearRegression=None, random_stat
     return compute_metric(error, metric)
 
 
-def t2(X: numpy:array, y: numpy:array=None) -> float:
+def t2(X: numpy.array, y: numpy.array=None) -> float:
     """
     Number of examples per dimension (n / m).
 

@@ -3,7 +3,9 @@ import os
 from pathlib import Path
 from sklearn.datasets import load_boston
 
-src_dir = Path(__file__).resolve().parents[1] 
+src_dir = Path(__file__).resolve().parents[1]
+
+print(src_dir)
 sys.path.append(os.path.abspath(src_dir))
 from lorena import *
 
