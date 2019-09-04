@@ -1,39 +1,114 @@
 import numpy
-import category_encoders as ce
 import pandas
+import sys
 
-from utils import *
 from sklearn.metrics import r2_score
 from sklearn.linear_model import LinearRegression
 from scipy.stats.stats import pearsonr, spearmanr
+from os.path import join
+from pathlib import Path
+
+project_dir = Path(__file__).resolve().parents[1]
+sys.path.append(join(project_dir, 'pymeta', 'meta_features'))
+from .utils import *
 
 
 def n_of_examples(X: numpy.array, y: numpy.array=None) -> int:
-    '''Number of examples in a dataset.'''
+    '''
+    Number of examples in a dataset.
+    
+    Parameters
+    ----------    
+    X : numpy.array
+        2d-array with features columns.
+    y : numpy.array
+        Array of response values.
+
+    Return
+    ------
+    int:
+        Number of observations.
+    '''
 
     return X.shape[0]
 
 
 def n(X: numpy.array, y: numpy.array=None) -> int:
-    '''Alias for number of examples in a dataset.'''
+    '''
+    Alias for ``n_of_examples``.
+    
+    Parameters
+    ----------    
+    X : numpy.array
+        2d-array with features columns.
+    y : numpy.array
+        Array of response values.
+
+    Return
+    ------
+    int:
+        Number of observations.
+    '''
 
     return X.shape[0]
 
 
 def n_of_features(X: numpy.array, y: numpy.array=None) -> int:
-    '''Number of attributes in a dataset.'''
+    '''
+    Number of attributes in a dataset.
+    
+    Parameters
+    ----------    
+    X : numpy.array
+        2d-array with features columns.
+    y : numpy.array
+        Array of response values.
+
+    Return
+    ------
+    int:
+        Number of features.    
+    '''
 
     return X.shape[1]
 
 
 def m(X: numpy.array, y: numpy.array=None) -> int:
-    '''Alias for number of attributes in a dataset.'''
+    '''
+    Alias for ``n_of_features``.
+    
+    Parameters
+    ----------    
+    X : numpy.array
+        2d-array with features columns.
+    y : numpy.array
+        Array of response values.
+
+    Return
+    ------
+    int:
+        Number of features. 
+    '''
 
     return X.shape[1]
 
 
-def proportion_of_categorical(X: numpy.array, y: numpy.array=None) -> int:
-    '''Proportion of categorical features in a dataset.'''
+def proportion_of_categorical(X: numpy.array, y: numpy.array=None) -> float:
+    '''
+    Proportion of categorical features in a dataset.
+
+    Parameters
+    ----------    
+    X : numpy.array
+        2d-array with features columns.
+    y : numpy.array
+        Array of response values.
+
+    Return
+    ------
+    float:
+        Number of categorical features over total number of features. 
+    '''
 
     # check if not dataframe
     if not isinstance(X, pandas.DataFrame):
@@ -46,13 +121,43 @@ def proportion_of_categorical(X: numpy.array, y: numpy.array=None) -> int:
 
 
 def example_features_ratio(X: numpy.array, y: numpy.array=None) -> float:
-    '''Ratio of the number of examples to the number of features.'''
+    '''
+    Ratio of the number of examples to the number of features.
+
+    Parameters
+    ----------    
+    X : numpy.array
+        2d-array with features columns.
+    y : numpy.array
+        Array of response values.
+
+    Return
+    ------
+    float:
+        Number of observations over number of features. 
+    
+    '''
 
     return n_of_examples(X) / n_of_features(X)
 
 
 def proportion_of_attributes_outliers(X: numpy.array, y: numpy.array=None) -> float:
-    '''Propotion of attributes with outliers.'''
+    '''
+    Propotion of attributes with outliers.
+    
+    Parameters
+    ----------    
+    X : numpy.array
+        2d-array with features columns.
+    y : numpy.array
+        Array of response values.
+
+    Return
+    ------
+    float:
+        Number of features with outliers over total number of features. 
+
+    '''
 
     # check if not dataframe
     if not isinstance(X, pandas.DataFrame):
@@ -70,7 +175,20 @@ def proportion_of_attributes_outliers(X: numpy.array, y: numpy.array=None) -> fl
 
 
 def coeficient_of_variation_target(y: numpy.array) -> float:
-    '''Coefficient of variation of the target (ratio of the standard deviation to the mean).'''
+    '''
+    Coefficient of variation of the target (ratio of the standard deviation to the mean).
+    
+    Parameters
+    ----------    
+    y : numpy.array
+        Array of response values.
+
+    Return
+    ------
+    float:
+        Standard deviation of the target over mean;
+    
+    '''
 
     return numpy.std(y) / numpy.mean(y)
 
@@ -81,8 +199,20 @@ def coeficient_of_variation_target(y: numpy.array) -> float:
 
 
 def outliers_on_target(y: numpy.array) -> int:
-    '''Presence of outliers in the target.'''
+    '''
+    Presence of outliers in the target.
+    
+    Parameters
+    ----------    
+    y : numpy.array
+        Array of response values.
 
+    Return
+    ------
+    int:
+        1 if there is outliers in target, 0 instead.
+
+    '''
     iqr, q1, q3 = IQR(y)
     is_outlier = (y < (q1 - 1.5 * iqr)[0]) | (y > (q3 + 1.5 * iqr)[0])
 
@@ -90,13 +220,41 @@ def outliers_on_target(y: numpy.array) -> int:
 
 
 def stationarity_of_target(y: numpy.array) -> int:
-    '''Stationarity of the target (check if the standard deviation is larger than mean).'''
+    '''
+    Stationarity of the target (check if the standard deviation is larger than mean).
+    
+    Parameters
+    ----------    
+    y : numpy.array
+        Array of response values.
+
+    Return
+    ------
+    int:
+        1 if the standard deviation of the target is larger than mean, 0 instead.
+
+    '''
 
     return int(y.std() > y.mean())
 
 
 def r2_without_categorical(X: numpy.array, y: numpy.array) -> float:
-    '''R2 coefficient of linear regression (without categorical attributes).'''
+    '''
+    R2 coefficient of linear regression (without categorical attributes).
+
+    Parameters
+    ----------    
+    X : numpy.array
+        2d-array with features columns.
+    y : numpy.array
+        Array of response values.
+
+    Return
+    ------
+    float:
+        R2 score.
+    
+    '''
 
     # check if not dataframe
     if not isinstance(X, pandas.DataFrame):
@@ -114,7 +272,21 @@ def r2_without_categorical(X: numpy.array, y: numpy.array) -> float:
 
 
 def r2_with_binarized_categorical(X: numpy.array, y: numpy.array=None) -> float:
-    '''R2 coefficient of linear regression (without categorical attributes).'''
+    '''
+    R2 coefficient of linear regression (without categorical attributes).
+    
+    Parameters
+    ----------    
+    X : numpy.array
+        2d-array with features columns.
+    y : numpy.array
+        Array of response values.
+
+    Return
+    ------
+    float:
+        R2 score. 
+    '''
 
     # check if not dataframe
     if not isinstance(X, pandas.DataFrame):
@@ -134,7 +306,31 @@ def r2_with_binarized_categorical(X: numpy.array, y: numpy.array=None) -> float:
 
 
 def mean_feature_correlation(X: numpy.array, y: numpy.array=None, method: str='spearman') -> float:
-    '''Average correlation between the numeric features.'''
+    '''
+    Average correlation between the numeric features.
+    
+   Parameters
+    ----------
+    X : numpy.array
+        2d-array with features columns.
+    y : numpy.array
+        Array of response values.
+    method : {'pearson', 'kendall', 'spearman'} or callable
+        * pearson : standard correlation coefficient
+        * kendall : Kendall Tau correlation coefficient
+        * spearman : Spearman rank correlation
+        * callable: callable with input two 1d ndarrays
+            and returning a float. Note that the returned matrix from corr
+            will have 1 along the diagonals and will be symmetric
+            regardless of the callable's behavior
+            .. versionadded:: 0.24.0
+
+    Return
+    ------
+    float:
+        Mean correlation between the features.   
+    
+    '''
 
     # check if not dataframe
     if not isinstance(X, pandas.DataFrame):
@@ -162,6 +358,15 @@ def mean_feature_correlation_target(X: numpy.array, y: numpy.array, method: str=
         2d-array with features columns.
     y : numpy.array
         Array of response values.
+    method : {'pearson', 'kendall', 'spearman'} or callable
+        * pearson : standard correlation coefficient
+        * kendall : Kendall Tau correlation coefficient
+        * spearman : Spearman rank correlation
+        * callable: callable with input two 1d ndarrays
+            and returning a float. Note that the returned matrix from corr
+            will have 1 along the diagonals and will be symmetric
+            regardless of the callable's behavior
+            .. versionadded:: 0.24.0        
 
     Return
     ------

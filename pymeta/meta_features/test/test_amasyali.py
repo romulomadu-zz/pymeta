@@ -16,7 +16,7 @@ def test_proportion_of_binary_features():
     pass
     
 
-def test_proportion_of_outlier_target():
+def test_proportion_of_outliers_target():
     pass
 
 

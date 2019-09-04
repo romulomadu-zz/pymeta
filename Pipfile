@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+pandas = "*"
+scikit-learn = "*"
+scipy = "*"
+joblib = "*"
+networkx = "*"
+sphinx-rtd-theme = "*"
+sphinx-automodapi = "*"
+
+[requires]
+python_version = "3.7"

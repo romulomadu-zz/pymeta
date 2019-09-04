@@ -1,4 +1,5 @@
 import pandas
+import numpy
 
 
 def IQR(X) -> tuple:
@@ -18,11 +19,11 @@ def compute_metric(arr, metric):
     n = max(arr.shape)
     # Select metric to return
     if metric == 'mae':
-        return np.abs(np.array(arr)).sum() / n
+        return numpy.abs(numpy.array(arr)).sum() / n
     if metric == 'mse':
-        return (np.array(arr) ** 2).sum() / (n - 1)
+        return (numpy.array(arr) ** 2).sum() / (n - 1)
     if metric == 'rmse':
-        return (np.sqrt(np.array(arr) ** 2)).sum() / n
+        return (numpy.sqrt(numpy.array(arr) ** 2)).sum() / n
 
 
 def min_max(x):
@@ -40,10 +41,32 @@ def check_cat(X):
     n_cat = 0
     cat_idx = list()
     for i in range(m):
-        n_unique = len(np.unique(X[:, i]))
+        n_unique = len(numpy.unique(X[:, i]))
         if n_unique==2:
             n_cat = n_cat + 1
             cat_idx.append(i)
 
     return n_cat, cat_idx
+
+# Credits: scikit-learn project.
+# https://github.com/scikit-learn/scikit-learn
+def check_random_state(seed):
+    """Turn seed into a numpy.random.RandomState instance.
+
+    Parameters
+    ----------
+    seed : None | int | instance of RandomState
+        If seed is None, return the RandomState singleton used by numpy.random.
+        If seed is an int, return a new RandomState instance seeded with seed.
+        If seed is already a RandomState instance, return it.
+        Otherwise raise ValueError.
+    """
+    if seed is None or seed is numpy.random:
+        return numpy.random.mtrand._rand
+    if isinstance(seed, numbers.Integral):
+        return numpy.random.RandomState(seed)
+    if isinstance(seed, numpy.random.RandomState):
+        return seed
+    raise ValueError('%r cannot be used to seed a numpy.random.RandomState'
+                     ' instance' % seed)
 
