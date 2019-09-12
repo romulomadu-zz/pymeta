@@ -1,0 +1,7 @@
+README.md
+setup.py
+pymeta.egg-info/PKG-INFO
+pymeta.egg-info/SOURCES.txt
+pymeta.egg-info/dependency_links.txt
+pymeta.egg-info/requires.txt
+pymeta.egg-info/top_level.txt

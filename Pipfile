@@ -14,6 +14,7 @@ networkx = "*"
 sphinx-rtd-theme = "*"
 sphinx-automodapi = "*"
 category-encoders = "*"
+pymeta = {editable = true,path = "."}
 
 [requires]
 python_version = "3.7"
