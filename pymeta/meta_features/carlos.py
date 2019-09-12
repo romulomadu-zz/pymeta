@@ -1,6 +1,7 @@
 import numpy
 import pandas
 import sys
+import category_encoders as ce
 
 from sklearn.metrics import r2_score
 from sklearn.linear_model import LinearRegression
@@ -93,7 +94,7 @@ def m(X: numpy.array, y: numpy.array=None) -> int:
     return X.shape[1]
 
 
-def proportion_of_categorical(X: numpy.array, y: numpy.array=None) -> float:
+def proportion_of_categorical(X: numpy.array, y: numpy.array=None, categorical_mask: list=None) -> float:
     '''
     Proportion of categorical features in a dataset.
 
@@ -103,21 +104,27 @@ def proportion_of_categorical(X: numpy.array, y: numpy.array=None) -> float:
         2d-array with features columns.
     y : numpy.array
         Array of response values.
+    categorical_mask : list, optional(default=None)
+        List of bool mask for categorical columns.
 
     Return
     ------
     float:
         Number of categorical features over total number of features. 
     '''
+    
+    # check if categorical mask was passed
+    if isinstance(categorical_mask, list):
+        return sum(categorical_mask) / len(categorical_mask)
+    else:
 
-    # check if not dataframe
-    if not isinstance(X, pandas.DataFrame):
-        X = pandas.DataFrame(X)
-
-    # get number of categorical columns
-    n_categorical = len(numpy.where(X.dtypes != numpy.float)[0])
-
-    return n_categorical / n_of_features(X)
+        # check if not dataframe
+        X = (pandas.DataFrame(X) if not isinstance(X, pandas.DataFrame) else X)
+    
+        # get number of categorical columns
+        n_categorical = sum(X.dtypes != numpy.float)
+        
+        return n_categorical / n_of_features(X)
 
 
 def example_features_ratio(X: numpy.array, y: numpy.array=None) -> float:
@@ -158,18 +165,17 @@ def proportion_of_attributes_outliers(X: numpy.array, y: numpy.array=None) -> fl
         Number of features with outliers over total number of features. 
 
     '''
-
+  
     # check if not dataframe
-    if not isinstance(X, pandas.DataFrame):
-        X = pandas.DataFrame(X)
-
+    X = (pandas.DataFrame(X) if not isinstance(X, pandas.DataFrame) else X)
+    
     # get number of columns with outliers
     iqr, q1, q3 = IQR(X)
     is_outlier = (X < (q1 - 1.5 * iqr)) | (X > (q3 + 1.5 * iqr))
     m_with_outlier = is_outlier.any(axis=0).sum()
 
     # get number of numeric columns
-    m_numeric = len(numpy.where(X.dtypes == numpy.float)[0])
+    m_numeric = sum(X.dtypes == numpy.float)
 
     return m_with_outlier / m_numeric
 
@@ -238,7 +244,7 @@ def stationarity_of_target(y: numpy.array) -> int:
     return int(y.std() > y.mean())
 
 
-def r2_without_categorical(X: numpy.array, y: numpy.array) -> float:
+def r2_without_categorical(X: numpy.array, y: numpy.array, model: LinearRegression=None) -> float:
     '''
     R2 coefficient of linear regression (without categorical attributes).
 
@@ -248,6 +254,8 @@ def r2_without_categorical(X: numpy.array, y: numpy.array) -> float:
         2d-array with features columns.
     y : numpy.array
         Array of response values.
+    model : LineaRegression, optional(default=None)
+        Linear model pre fitted to pass.
 
     Return
     ------
@@ -256,22 +264,23 @@ def r2_without_categorical(X: numpy.array, y: numpy.array) -> float:
     
     '''
 
-    # check if not dataframe
-    if not isinstance(X, pandas.DataFrame):
-        X =  pandas.DataFrame(X)
+    # check if not dataframe.
+    X = (pandas.DataFrame(X) if not isinstance(X, pandas.DataFrame) else X)
     
-    # get numerical features indexes and filt.
-    numerical_features = numpy.where(X.dtypes == numpy.float)[0]
-    X_numerical = X.iloc[:, numerical_features]
+    # check if categorical mask was passed and get numerical features.
+    numerical_features = (X.dtypes == numpy.float)
+
+    # get numerical features filt.
+    X_numerical = X.loc[:, numerical_features]
 
     # train model and make prediction.
-    model  = LinearRegression().fit(X_numerical, y)
+    model = (LinearRegression().fit(X_numerical, y) if not isinstance(model, LinearRegression) else model)
     y_pred = model.predict(X_numerical)
 
     return r2_score(y, y_pred)
 
 
-def r2_with_binarized_categorical(X: numpy.array, y: numpy.array=None) -> float:
+def r2_with_binarized_categorical(X: numpy.array, y: numpy.array=None, categorical_mask: list=None) -> float:
     '''
     R2 coefficient of linear regression (without categorical attributes).
     
@@ -281,6 +290,8 @@ def r2_with_binarized_categorical(X: numpy.array, y: numpy.array=None) -> float:
         2d-array with features columns.
     y : numpy.array
         Array of response values.
+    categorical_mask : list, optional(default=None)
+        List of bool mask for categorical columns.
 
     Return
     ------
@@ -289,14 +300,16 @@ def r2_with_binarized_categorical(X: numpy.array, y: numpy.array=None) -> float:
     '''
 
     # check if not dataframe
-    if not isinstance(X, pandas.DataFrame):
-        X = pandas.DataFrame(X)
+    X = (pandas.DataFrame(X) if not isinstance(X, pandas.DataFrame) else X)
     
-    # binarize categorical data
-    categorical_features = numpy.where(X.dtypes != numpy.float)[0]
-    if categorical_features.size:
-        binary = ce.BinaryEncoder(cols=categorical_features)
-        X = binary.fit_transform(X, y)
+    # check if categorical mask was passed.
+    categorical_mask = (categorical_mask if isinstance(categorical_mask, list) else (X.dtypes != numpy.float))
+    
+    # binarize categorical data    
+    categorical_index = numpy.where(categorical_mask)[0]
+    if len(categorical_index) > 0:
+        binary = ce.BinaryEncoder(cols=categorical_index)
+        X = binary.fit_transform(X.values)
 
     # train model and make prediction.
     model  = LinearRegression().fit(X, y)
@@ -333,8 +346,7 @@ def mean_feature_correlation(X: numpy.array, y: numpy.array=None, method: str='s
     '''
 
     # check if not dataframe
-    if not isinstance(X, pandas.DataFrame):
-        X = pandas.DataFrame(X)
+    X = (pandas.DataFrame(X) if not isinstance(X, pandas.DataFrame) else X)
     
     # get numerical features indexes and filt.
     numerical_features = numpy.where(X.dtypes == numpy.float)[0]
@@ -374,13 +386,15 @@ def mean_feature_correlation_target(X: numpy.array, y: numpy.array, method: str=
         Average feature correlation to the output.
     """
     # check if not dataframe
-    if not isinstance(X, pandas.DataFrame):
-        X = pandas.DataFrame(X)  
+    X = (pandas.DataFrame(X) if not isinstance(X, pandas.DataFrame) else X)
+    
     y = pandas.Series(y) 
 
     if method=='spearman':
         rho = spearmanr
     if method=='pearson':
-        rho = pearsonr    
+        rho = pearsonr
+    #TODO
+    # add other methods    
 
     return X.apply(lambda x: abs(rho(x, y).correlation)).mean()

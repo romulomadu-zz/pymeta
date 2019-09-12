@@ -13,6 +13,7 @@ joblib = "*"
 networkx = "*"
 sphinx-rtd-theme = "*"
 sphinx-automodapi = "*"
+category-encoders = "*"
 
 [requires]
 python_version = "3.7"

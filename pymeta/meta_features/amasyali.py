@@ -49,6 +49,7 @@ def proportion_of_binary_features(X: numpy.array, y: numpy.array=None) -> float:
         Number of binary features over total number of features.    
     '''
 
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     is_binary = X.apply(lambda x: len(numpy.unique(x))) == 2
 
@@ -72,6 +73,7 @@ def min_kurtosis_numerical_features(X: numpy.array, y: numpy.array=None) -> floa
         Minimum kurtosis.    
     '''
 
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     numerical_features = numpy.where(X.dtypes == numpy.float)[0]
     
@@ -118,6 +120,7 @@ def mean_kurtosis_numerical_features(X: numpy.array, y: numpy.array=None) -> flo
         Average kurtosis.    
     '''
 
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     numerical_features = numpy.where(X.dtypes == numpy.float)[0]
     
@@ -141,6 +144,7 @@ def min_skewness_numerical_features(X: numpy.array, y: numpy.array=None) -> floa
         Minimum skewness.    
     '''
 
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     numerical_features = numpy.where(X.dtypes == numpy.float)[0]
     
@@ -164,6 +168,7 @@ def max_skewness_numerical_features(X: numpy.array, y: numpy.array=None) -> floa
         Maximum skewness.    
     '''
 
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     numerical_features = numpy.where(X.dtypes == numpy.float)[0]
     
@@ -187,6 +192,7 @@ def mean_skewness_numerical_features(X: numpy.array, y: numpy.array=None) -> flo
         Average skewness.    
     '''
     
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     numerical_features = numpy.where(X.dtypes == numpy.float)[0]
     
@@ -210,6 +216,7 @@ def min_mean_numerical_features(X: numpy.array, y: numpy.array=None) -> float:
         Minimum mean.    
     '''
 
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     numerical_features = numpy.where(X.dtypes == numpy.float)[0]
     
@@ -233,6 +240,7 @@ def max_mean_numerical_features(X: numpy.array, y: numpy.array=None) -> float:
         Maximum mean.    
     '''
 
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     numerical_features = numpy.where(X.dtypes == numpy.float)[0]
     
@@ -255,7 +263,8 @@ def mean_mean_numerical_features(X: numpy.array, y: numpy.array=None) -> float:
     float:
         Average mean.    
     '''
-    
+
+    # check if is dataframe    
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     numerical_features = numpy.where(X.dtypes == numpy.float)[0]
     
@@ -279,6 +288,7 @@ def min_std_numerical_features(X: numpy.array, y: numpy.array=None) -> float:
         Minimum standard deviation.    
     '''
 
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     numerical_features = numpy.where(X.dtypes == numpy.float)[0]
     
@@ -302,6 +312,7 @@ def max_std_numerical_features(X: numpy.array, y: numpy.array=None) -> float:
         Maximum standard deviation.    
     '''
 
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     numerical_features = numpy.where(X.dtypes == numpy.float)[0]
     
@@ -325,6 +336,7 @@ def mean_std_numerical_features(X: numpy.array, y: numpy.array=None) -> float:
         Average standard deviation.    
     '''
     
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     numerical_features = numpy.where(X.dtypes == numpy.float)[0]
     
@@ -348,6 +360,7 @@ def proportion_of_features_with_na(X: numpy.array, y: numpy.array=None) -> float
         Number of features with missing values over total number of features.    
     '''
 
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     has_na = X.isnull().any()
     
@@ -381,7 +394,8 @@ def proportion_of_correlated_features_target(X: numpy.array, y: numpy.array=None
     float:
         Number of features correlated to target over total number of features.    
     '''
-    # check if not dataframe
+
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
     y = pandas.Series(y) 
 
@@ -422,7 +436,7 @@ def proportion_of_correlated_features(X: numpy.array, y: numpy.array=None, metho
     float:
         Number of features correlated over total number of features.   
     '''
-    # check if not dataframe
+    # check if is dataframe
     X = (X if isinstance(X, pandas.DataFrame) else pandas.DataFrame(X))
 
     # get numerical features indexes and filt.

@@ -1,5 +1,6 @@
 import pandas
 import numpy
+import numbers
 
 
 def IQR(X) -> tuple:
