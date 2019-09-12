@@ -93,6 +93,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../metalearning.html">Meta Learning</a></li>
 </ul>
 </li>
 </ul>
@@ -167,13 +168,14 @@
 <h1>r2_without_categorical<a class="headerlink" href="#r2-without-categorical" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="pymeta.meta_features.r2_without_categorical">
-<code class="sig-prename descclassname">pymeta.meta_features.</code><code class="sig-name descname">r2_without_categorical</code><span class="sig-paren">(</span><em class="sig-param">X: numpy.array</em>, <em class="sig-param">y: numpy.array</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#pymeta.meta_features.r2_without_categorical" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pymeta.meta_features.</code><code class="sig-name descname">r2_without_categorical</code><span class="sig-paren">(</span><em class="sig-param">X: numpy.array</em>, <em class="sig-param">y: numpy.array</em>, <em class="sig-param">model: sklearn.linear_model.base.LinearRegression = None</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#pymeta.meta_features.r2_without_categorical" title="Permalink to this definition">¶</a></dt>
 <dd><p>R2 coefficient of linear regression (without categorical attributes).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>numpy.array</em>) – 2d-array with features columns.</p></li>
 <li><p><strong>y</strong> (<em>numpy.array</em>) – Array of response values.</p></li>
+<li><p><strong>model</strong> (<em>LineaRegression</em><em>, </em><em>optional</em><em>(</em><em>default=None</em><em>)</em>) – Linear model pre fitted to pass.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="mean_std_features" href="pymeta.meta_features.mean_std_features.html" />
+    <link rel="next" title="mean_std_numerical_features" href="pymeta.meta_features.mean_std_numerical_features.html" />
     <link rel="prev" title="mean_skewness_numerical_features" href="pymeta.meta_features.mean_skewness_numerical_features.html" /> 
 </head>
 
@@ -93,6 +93,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../metalearning.html">Meta Learning</a></li>
 </ul>
 </li>
 </ul>
@@ -167,14 +168,15 @@
 <h1>mean_squared_residuos<a class="headerlink" href="#mean-squared-residuos" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="pymeta.meta_features.mean_squared_residuos">
-<code class="sig-prename descclassname">pymeta.meta_features.</code><code class="sig-name descname">mean_squared_residuos</code><span class="sig-paren">(</span><em class="sig-param">X: numpy.array</em>, <em class="sig-param">y: numpy.array</em>, <em class="sig-param">model: sklearn.linear_model.base.LinearRegression = None</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#pymeta.meta_features.mean_squared_residuos" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pymeta.meta_features.</code><code class="sig-name descname">mean_squared_residuos</code><span class="sig-paren">(</span><em class="sig-param">X: numpy.array</em>, <em class="sig-param">y: numpy.array</em>, <em class="sig-param">model: sklearn.linear_model.base.LinearRegression = None</em>, <em class="sig-param">ignore_categorical: bool = False</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#pymeta.meta_features.mean_squared_residuos" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mean squared error of OLS.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>numpy.array</em>) – 2d-array with features columns</p></li>
 <li><p><strong>y</strong> (<em>numpy.array</em>) – Array of response values</p></li>
-<li><p><strong>model</strong> (<em>np.array</em>) – Linear regression model between X,y</p></li>
+<li><p><strong>model</strong> (<em>LinearRegression</em>) – Linear regression model between X,y</p></li>
+<li><p><strong>ignore_categorical</strong> (<em>bool</em>) – Flag to ignore categorical features in OLS regression</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -196,7 +198,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pymeta.meta_features.mean_std_features.html" class="btn btn-neutral float-right" title="mean_std_features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pymeta.meta_features.mean_std_numerical_features.html" class="btn btn-neutral float-right" title="mean_std_numerical_features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="pymeta.meta_features.mean_skewness_numerical_features.html" class="btn btn-neutral float-left" title="mean_skewness_numerical_features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

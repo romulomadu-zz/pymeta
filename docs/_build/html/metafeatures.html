@@ -93,6 +93,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="metalearning.html">Meta Learning</a></li>
 </ul>
 </li>
 </ul>
@@ -203,7 +204,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.individual_feature_efficiency.html#pymeta.meta_features.individual_feature_efficiency" title="pymeta.meta_features.individual_feature_efficiency"><code class="xref py py-obj docutils literal notranslate"><span class="pre">individual_feature_efficiency</span></code></a>(X, y[, …])</p></td>
 <td><p>Individual feature efficiency.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.input_distribution.html#pymeta.meta_features.input_distribution" title="pymeta.meta_features.input_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">input_distribution</span></code></a>(X[, y])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.input_distribution.html#pymeta.meta_features.input_distribution" title="pymeta.meta_features.input_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">input_distribution</span></code></a>(X, y)</p></td>
 <td><p>Input distribution.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.l1.html#pymeta.meta_features.l1" title="pymeta.meta_features.l1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">l1</span></code></a>(X, y[, model])</p></td>
@@ -233,7 +234,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.max_std_numerical_features.html#pymeta.meta_features.max_std_numerical_features" title="pymeta.meta_features.max_std_numerical_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_std_numerical_features</span></code></a>(X[, y])</p></td>
 <td><p>Maximum standard deviation of numerical features.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.mean_absolute_residuos.html#pymeta.meta_features.mean_absolute_residuos" title="pymeta.meta_features.mean_absolute_residuos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean_absolute_residuos</span></code></a>(X, y[, model])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.mean_absolute_residuos.html#pymeta.meta_features.mean_absolute_residuos" title="pymeta.meta_features.mean_absolute_residuos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean_absolute_residuos</span></code></a>(X, y[, model, …])</p></td>
 <td><p>Mean absolute error of OLS.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.mean_feature_correlation.html#pymeta.meta_features.mean_feature_correlation" title="pymeta.meta_features.mean_feature_correlation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean_feature_correlation</span></code></a>(X[, y, method])</p></td>
@@ -251,91 +252,88 @@
 <tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.mean_skewness_numerical_features.html#pymeta.meta_features.mean_skewness_numerical_features" title="pymeta.meta_features.mean_skewness_numerical_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean_skewness_numerical_features</span></code></a>(X[, y])</p></td>
 <td><p>Mean skewness of numerical features.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.mean_squared_residuos.html#pymeta.meta_features.mean_squared_residuos" title="pymeta.meta_features.mean_squared_residuos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean_squared_residuos</span></code></a>(X, y[, model])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.mean_squared_residuos.html#pymeta.meta_features.mean_squared_residuos" title="pymeta.meta_features.mean_squared_residuos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean_squared_residuos</span></code></a>(X, y[, model, …])</p></td>
 <td><p>Mean squared error of OLS.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.mean_std_features.html#pymeta.meta_features.mean_std_features" title="pymeta.meta_features.mean_std_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean_std_features</span></code></a>(X[, y])</p></td>
-<td><p>Mean standard deviation of features.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.mean_std_numerical_features.html#pymeta.meta_features.mean_std_numerical_features" title="pymeta.meta_features.mean_std_numerical_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean_std_numerical_features</span></code></a>(X[, y])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.mean_std_numerical_features.html#pymeta.meta_features.mean_std_numerical_features" title="pymeta.meta_features.mean_std_numerical_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean_std_numerical_features</span></code></a>(X[, y])</p></td>
 <td><p>Mean standard deviation of numerical features.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.min_kurtosis_numerical_features.html#pymeta.meta_features.min_kurtosis_numerical_features" title="pymeta.meta_features.min_kurtosis_numerical_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min_kurtosis_numerical_features</span></code></a>(X[, y])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.min_kurtosis_numerical_features.html#pymeta.meta_features.min_kurtosis_numerical_features" title="pymeta.meta_features.min_kurtosis_numerical_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min_kurtosis_numerical_features</span></code></a>(X[, y])</p></td>
 <td><p>Minimum kurtosis of numerical features.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.min_mean_numerical_features.html#pymeta.meta_features.min_mean_numerical_features" title="pymeta.meta_features.min_mean_numerical_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min_mean_numerical_features</span></code></a>(X[, y])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.min_mean_numerical_features.html#pymeta.meta_features.min_mean_numerical_features" title="pymeta.meta_features.min_mean_numerical_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min_mean_numerical_features</span></code></a>(X[, y])</p></td>
 <td><p>Minimum mean of numerical features.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.min_skewness_numerical_features.html#pymeta.meta_features.min_skewness_numerical_features" title="pymeta.meta_features.min_skewness_numerical_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min_skewness_numerical_features</span></code></a>(X[, y])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.min_skewness_numerical_features.html#pymeta.meta_features.min_skewness_numerical_features" title="pymeta.meta_features.min_skewness_numerical_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min_skewness_numerical_features</span></code></a>(X[, y])</p></td>
 <td><p>Minimum skewness of numerical features.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.min_std_numerical_features.html#pymeta.meta_features.min_std_numerical_features" title="pymeta.meta_features.min_std_numerical_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min_std_numerical_features</span></code></a>(X[, y])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.min_std_numerical_features.html#pymeta.meta_features.min_std_numerical_features" title="pymeta.meta_features.min_std_numerical_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">min_std_numerical_features</span></code></a>(X[, y])</p></td>
 <td><p>Minimum standard deviation of numerical features.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.n.html#pymeta.meta_features.n" title="pymeta.meta_features.n"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n</span></code></a>(X[, y])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.n.html#pymeta.meta_features.n" title="pymeta.meta_features.n"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n</span></code></a>(X[, y])</p></td>
 <td><p>Alias for <code class="docutils literal notranslate"><span class="pre">n_of_examples</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.n_of_examples.html#pymeta.meta_features.n_of_examples" title="pymeta.meta_features.n_of_examples"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_of_examples</span></code></a>(X[, y])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.n_of_examples.html#pymeta.meta_features.n_of_examples" title="pymeta.meta_features.n_of_examples"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_of_examples</span></code></a>(X[, y])</p></td>
 <td><p>Number of examples in a dataset.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.n_of_features.html#pymeta.meta_features.n_of_features" title="pymeta.meta_features.n_of_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_of_features</span></code></a>(X[, y])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.n_of_features.html#pymeta.meta_features.n_of_features" title="pymeta.meta_features.n_of_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_of_features</span></code></a>(X[, y])</p></td>
 <td><p>Number of attributes in a dataset.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.nonlinearity_of_linear_regressor.html#pymeta.meta_features.nonlinearity_of_linear_regressor" title="pymeta.meta_features.nonlinearity_of_linear_regressor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nonlinearity_of_linear_regressor</span></code></a>(X, y[, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.nonlinearity_of_linear_regressor.html#pymeta.meta_features.nonlinearity_of_linear_regressor" title="pymeta.meta_features.nonlinearity_of_linear_regressor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nonlinearity_of_linear_regressor</span></code></a>(X, y[, …])</p></td>
 <td><p>Calculate the non-linearity of a linear regressor</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.nonlinearity_of_nn_regressor.html#pymeta.meta_features.nonlinearity_of_nn_regressor" title="pymeta.meta_features.nonlinearity_of_nn_regressor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nonlinearity_of_nn_regressor</span></code></a>(X, y[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.nonlinearity_of_nn_regressor.html#pymeta.meta_features.nonlinearity_of_nn_regressor" title="pymeta.meta_features.nonlinearity_of_nn_regressor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nonlinearity_of_nn_regressor</span></code></a>(X, y[, …])</p></td>
 <td><p>Non-linearity of nearest neighbor regressor.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.outliers_on_target.html#pymeta.meta_features.outliers_on_target" title="pymeta.meta_features.outliers_on_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outliers_on_target</span></code></a>(y)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.outliers_on_target.html#pymeta.meta_features.outliers_on_target" title="pymeta.meta_features.outliers_on_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outliers_on_target</span></code></a>(y)</p></td>
 <td><p>Presence of outliers in the target.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.output_distribution.html#pymeta.meta_features.output_distribution" title="pymeta.meta_features.output_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_distribution</span></code></a>(X, y[, dist_matrix])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.output_distribution.html#pymeta.meta_features.output_distribution" title="pymeta.meta_features.output_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_distribution</span></code></a>(X, y[, dist_matrix])</p></td>
 <td><p>Output distribution.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_attributes_outliers.html#pymeta.meta_features.proportion_of_attributes_outliers" title="pymeta.meta_features.proportion_of_attributes_outliers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_attributes_outliers</span></code></a>(X[, y])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_attributes_outliers.html#pymeta.meta_features.proportion_of_attributes_outliers" title="pymeta.meta_features.proportion_of_attributes_outliers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_attributes_outliers</span></code></a>(X[, y])</p></td>
 <td><p>Propotion of attributes with outliers.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_binary_features.html#pymeta.meta_features.proportion_of_binary_features" title="pymeta.meta_features.proportion_of_binary_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_binary_features</span></code></a>(X[, y])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_binary_features.html#pymeta.meta_features.proportion_of_binary_features" title="pymeta.meta_features.proportion_of_binary_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_binary_features</span></code></a>(X[, y])</p></td>
 <td><p>Proportion of binary features.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_categorical.html#pymeta.meta_features.proportion_of_categorical" title="pymeta.meta_features.proportion_of_categorical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_categorical</span></code></a>(X[, y])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_categorical.html#pymeta.meta_features.proportion_of_categorical" title="pymeta.meta_features.proportion_of_categorical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_categorical</span></code></a>(X[, y, …])</p></td>
 <td><p>Proportion of categorical features in a dataset.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_correlated_features.html#pymeta.meta_features.proportion_of_correlated_features" title="pymeta.meta_features.proportion_of_correlated_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_correlated_features</span></code></a>(X[, y, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_correlated_features.html#pymeta.meta_features.proportion_of_correlated_features" title="pymeta.meta_features.proportion_of_correlated_features"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_correlated_features</span></code></a>(X[, y, …])</p></td>
 <td><p>Proportion of features correlated.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_correlated_features_target.html#pymeta.meta_features.proportion_of_correlated_features_target" title="pymeta.meta_features.proportion_of_correlated_features_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_correlated_features_target</span></code></a>(X)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_correlated_features_target.html#pymeta.meta_features.proportion_of_correlated_features_target" title="pymeta.meta_features.proportion_of_correlated_features_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_correlated_features_target</span></code></a>(X)</p></td>
 <td><p>Proportion of features correlated with target.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_features_with_na.html#pymeta.meta_features.proportion_of_features_with_na" title="pymeta.meta_features.proportion_of_features_with_na"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_features_with_na</span></code></a>(X[, y])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_features_with_na.html#pymeta.meta_features.proportion_of_features_with_na" title="pymeta.meta_features.proportion_of_features_with_na"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_features_with_na</span></code></a>(X[, y])</p></td>
 <td><p>Proportion of features with missing values.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_outliers_target.html#pymeta.meta_features.proportion_of_outliers_target" title="pymeta.meta_features.proportion_of_outliers_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_outliers_target</span></code></a>(y)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.proportion_of_outliers_target.html#pymeta.meta_features.proportion_of_outliers_target" title="pymeta.meta_features.proportion_of_outliers_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proportion_of_outliers_target</span></code></a>(y)</p></td>
 <td><p>Proportion of outliers on target.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.r2_with_binarized_categorical.html#pymeta.meta_features.r2_with_binarized_categorical" title="pymeta.meta_features.r2_with_binarized_categorical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">r2_with_binarized_categorical</span></code></a>(X[, y])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.r2_with_binarized_categorical.html#pymeta.meta_features.r2_with_binarized_categorical" title="pymeta.meta_features.r2_with_binarized_categorical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">r2_with_binarized_categorical</span></code></a>(X[, y, …])</p></td>
 <td><p>R2 coefficient of linear regression (without categorical attributes).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.r2_without_categorical.html#pymeta.meta_features.r2_without_categorical" title="pymeta.meta_features.r2_without_categorical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">r2_without_categorical</span></code></a>(X, y)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.r2_without_categorical.html#pymeta.meta_features.r2_without_categorical" title="pymeta.meta_features.r2_without_categorical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">r2_without_categorical</span></code></a>(X, y[, model])</p></td>
 <td><p>R2 coefficient of linear regression (without categorical attributes).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.s1.html#pymeta.meta_features.s1" title="pymeta.meta_features.s1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">s1</span></code></a>(X, y[, dist_matrix])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.s1.html#pymeta.meta_features.s1" title="pymeta.meta_features.s1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">s1</span></code></a>(X, y[, dist_matrix])</p></td>
 <td><p>Alias for <code class="docutils literal notranslate"><span class="pre">output_distribution</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.s2.html#pymeta.meta_features.s2" title="pymeta.meta_features.s2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">s2</span></code></a>(X[, y])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.s2.html#pymeta.meta_features.s2" title="pymeta.meta_features.s2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">s2</span></code></a>(X[, y])</p></td>
 <td><p>Alias for <code class="docutils literal notranslate"><span class="pre">input_distribution</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.s3.html#pymeta.meta_features.s3" title="pymeta.meta_features.s3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">s3</span></code></a>(X, y[, dist_matrix, metric])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.s3.html#pymeta.meta_features.s3" title="pymeta.meta_features.s3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">s3</span></code></a>(X, y[, dist_matrix, metric])</p></td>
 <td><p>Alias for <code class="docutils literal notranslate"><span class="pre">error_of_nn_regressor</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.s4.html#pymeta.meta_features.s4" title="pymeta.meta_features.s4"><code class="xref py py-obj docutils literal notranslate"><span class="pre">s4</span></code></a>(X, y[, random_state, metric])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.s4.html#pymeta.meta_features.s4" title="pymeta.meta_features.s4"><code class="xref py py-obj docutils literal notranslate"><span class="pre">s4</span></code></a>(X, y[, random_state, metric])</p></td>
 <td><p>Alias for <code class="docutils literal notranslate"><span class="pre">nonlinearity_of_nn_regressor</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.stationarity_of_target.html#pymeta.meta_features.stationarity_of_target" title="pymeta.meta_features.stationarity_of_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stationarity_of_target</span></code></a>(y)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.stationarity_of_target.html#pymeta.meta_features.stationarity_of_target" title="pymeta.meta_features.stationarity_of_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stationarity_of_target</span></code></a>(y)</p></td>
 <td><p>Stationarity of the target (check if the standard deviation is larger than mean).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/pymeta.meta_features.t2.html#pymeta.meta_features.t2" title="pymeta.meta_features.t2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">t2</span></code></a>(X[, y])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="api/pymeta.meta_features.t2.html#pymeta.meta_features.t2" title="pymeta.meta_features.t2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">t2</span></code></a>(X[, y])</p></td>
 <td><p>Alias for <code class="docutils literal notranslate"><span class="pre">example_features_ratio</span></code>.</p></td>
 </tr>
 </tbody>
