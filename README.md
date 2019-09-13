@@ -2,6 +2,27 @@
 
 Version 0.1 has only metafeatures for regression tasks.
 
+## Installing
+
+To install PyMeta, first you need to clone the project from GitHub.
+
+```sh
+git clone https://github.com/romulomadu/pymeta.git
+```
+
+Go to project folder:
+
+```sh
+cd pymeta
+```
+
+Install with `pipenv`:
+
+```sh
+pipenv shell
+pipenv install -e .
+```
+
 ## References
 
 * Lorena, Ana C., et al. "Data complexity meta-features for regression problems." _Machine Learning_ 107.1 (2018): 209-246.
