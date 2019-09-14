@@ -42,12 +42,11 @@ pickleshare==0.7.5
 prometheus-client==0.7.1
 prompt-toolkit==2.0.9
 Pygments==2.4.2
--e git+https://github.com/romulomadu/pymeta.git@e79c87e3e6c28b6977170bfb3172e149c12a1cae#egg=pymeta
 pyparsing==2.4.2
 pyrsistent==0.15.4
 python-dateutil==2.8.0
-pytz==2019.2
-pywin32==224
+pytz
+pywin32
 pywinpty==0.5.5
 pyzmq==18.1.0
 qtconsole==4.5.5
