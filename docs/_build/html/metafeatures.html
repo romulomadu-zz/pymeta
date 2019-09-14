@@ -162,7 +162,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="meta-features">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="meta-features">
 <h1>Meta Features<a class="headerlink" href="#meta-features" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-pymeta.meta_features">
 <span id="pymeta-meta-features-package"></span><h2>pymeta.meta_features Package<a class="headerlink" href="#module-pymeta.meta_features" title="Permalink to this headline">¶</a></h2>
