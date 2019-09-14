@@ -15,6 +15,9 @@ sphinx-rtd-theme = "*"
 sphinx-automodapi = "*"
 category-encoders = "*"
 pymeta = {editable = true,path = "."}
+jupyter = "*"
+ipykernel = "*"
+sphinx-autobuild = "*"
 
 [requires]
 python_version = "3.7"
