@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorial 1 - Using MetaRegressionFeatures + OpenML API &mdash; PyMeta 0.1 documentation</title>
+  <title>Tutorial 1 - Using MetaFeaturesRegression + OpenML API &mdash; PyMeta 0.1 documentation</title>
   
 
   
@@ -85,7 +85,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="userguide.html">User Guide</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial 1 - Using MetaRegressionFeatures + OpenML API</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial 1 - Using MetaFeaturesRegression + OpenML API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Installing-Python’s-OpenML-API">Installing Python’s OpenML API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Downloading-dataset-from-OpenML-API">Downloading dataset from OpenML API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Get-meta-features-with-MetaFeaturesRegression">Get meta features with MetaFeaturesRegression</a></li>
@@ -141,7 +141,7 @@
         
           <li><a href="userguide.html">User Guide</a> &raquo;</li>
         
-      <li>Tutorial 1 - Using MetaRegressionFeatures + OpenML API</li>
+      <li>Tutorial 1 - Using MetaFeaturesRegression + OpenML API</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -382,9 +382,9 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Tutorial-1---Using-MetaRegressionFeatures-+-OpenML-API">
-<h1>Tutorial 1 - Using MetaRegressionFeatures + OpenML API<a class="headerlink" href="#Tutorial-1---Using-MetaRegressionFeatures-+-OpenML-API" title="Permalink to this headline">¶</a></h1>
-<p>The objective of this tutorial is to show how to download datasets from OpenML API and calculate his meta features using <code class="docutils literal notranslate"><span class="pre">MetaRegressionFeatures</span></code> class from PyMeta.</p>
+<div class="section" id="Tutorial-1---Using-MetaFeaturesRegression-+-OpenML-API">
+<h1>Tutorial 1 - Using MetaFeaturesRegression + OpenML API<a class="headerlink" href="#Tutorial-1---Using-MetaFeaturesRegression-+-OpenML-API" title="Permalink to this headline">¶</a></h1>
+<p>The objective of this tutorial is to show how to download datasets from OpenML API and calculate his meta features using <code class="docutils literal notranslate"><span class="pre">MetaFeaturesRegression</span></code> class from PyMeta.</p>
 <div class="section" id="Installing-Python’s-OpenML-API">
 <h2>Installing Python’s OpenML API<a class="headerlink" href="#Installing-Python’s-OpenML-API" title="Permalink to this headline">¶</a></h2>
 <p>To use OpenML API you need to install it using pip:</p>
@@ -398,11 +398,11 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>import openml
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">openml</span>
 
-# you must config you api key
-openml.config.apikey = &quot;your api key goes here&quot;
+<span class="c1"># you must config you api key</span>
+<span class="n">openml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">apikey</span> <span class="o">=</span> <span class="s2">&quot;your api key goes here&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -414,15 +414,15 @@ openml.config.apikey = &quot;your api key goes here&quot;
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span># This is done based on the dataset ID.
-dataset = openml.datasets.get_dataset(531)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># This is done based on the dataset ID.</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">openml</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_dataset</span><span class="p">(</span><span class="mi">531</span><span class="p">)</span>
 
-# Print a summary
-print(&quot;This is dataset &#39;%s&#39;, the target feature is &#39;%s&#39;&quot; %
-      (dataset.name, dataset.default_target_attribute))
-print(&quot;URL: %s&quot; % dataset.url)
-print(dataset.description)
+<span class="c1"># Print a summary</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is dataset &#39;</span><span class="si">%s</span><span class="s2">&#39;, the target feature is &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span>
+      <span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">default_target_attribute</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;URL: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dataset</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -469,17 +469,8 @@ CLASSINDEX: last
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>X, y, categorical_columns, columns_names = dataset.get_data(&#39;MEDV&#39;)
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>import numpy
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">categorical_columns</span><span class="p">,</span> <span class="n">columns_names</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s1">&#39;MEDV&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -487,9 +478,9 @@ CLASSINDEX: last
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span># view of first five samples of features dataframe
-X.head()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># view of first five samples of features dataframe</span>
+<span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -620,9 +611,9 @@ X.head()
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span># view of first five output target
-y.head()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># view of first five output target</span>
+<span class="n">y</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -644,9 +635,9 @@ Name: MEDV, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span># view of first five saamples of the categorical columns
-X.loc[:, categorical_columns].head()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># view of first five saamples of the categorical columns</span>
+<span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">categorical_columns</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -715,18 +706,9 @@ X.loc[:, categorical_columns].head()
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>import sys
-from os.path import join, abspath
-from pathlib import Path
-
-# get project dir
-project_dir = Path(abspath(&#39;&#39;)).resolve().parent
-# add it to path
-sys.path.append(join(project_dir))
-
-# get MetaFeaturesRegression
-from pymeta.meta_learning import MetaFeaturesRegression
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># get MetaFeaturesRegression</span>
+<span class="kn">from</span> <span class="nn">pymeta.meta_learning</span> <span class="k">import</span> <span class="n">MetaFeaturesRegression</span>
 </pre></div>
 </div>
 </div>
@@ -735,13 +717,13 @@ from pymeta.meta_learning import MetaFeaturesRegression
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>mfr = MetaFeaturesRegression(
-        dataset_name=&#39;Boston&#39;,
-        random_state=42,
-        n_jobs=3,
-        categorical_mask=categorical_columns
-)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">mfr</span> <span class="o">=</span> <span class="n">MetaFeaturesRegression</span><span class="p">(</span>
+        <span class="n">dataset_name</span><span class="o">=</span><span class="s1">&#39;Boston&#39;</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+        <span class="n">n_jobs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">categorical_mask</span><span class="o">=</span><span class="n">categorical_columns</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -750,8 +732,8 @@ from pymeta.meta_learning import MetaFeaturesRegression
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>mfr.fit(X, y)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">mfr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -804,9 +786,9 @@ from pymeta.meta_learning import MetaFeaturesRegression
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span># get metafeatures as pandas.DataFrame
-mfr.qualities()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># get metafeatures as pandas.DataFrame</span>
+<span class="n">mfr</span><span class="o">.</span><span class="n">qualities</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
